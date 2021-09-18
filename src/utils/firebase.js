@@ -1,15 +1,13 @@
 import firebase from "firebase/compat/app";
-import "firebase/compat/auth";
+import "firebase/compat/database";
 const firebaseConfig = {
-  apiKey: "AIzaSyB8fCVX-YUkKr3YzM4cGJr8L9TE4KiO2yA",
-  authDomain: "react-firebase-703a3.firebaseapp.com",
-  projectId: "react-firebase-703a3",
-  storageBucket: "react-firebase-703a3.appspot.com",
-  messagingSenderId: "88018014464",
-  appId: "1:88018014464:web:14a1e361c51895431ae3e5",
+  apiKey: "AIzaSyCdrUqjRl1duP4_RcpIQeIqOlvLMLVm1iE",
+  authDomain: "login-32fbb.firebaseapp.com",
+  databaseURL: "https://login-32fbb-default-rtdb.firebaseio.com",
+  projectId: "login-32fbb",
+  storageBucket: "login-32fbb.appspot.com",
+  messagingSenderId: "625865760805",
+  appId: "1:625865760805:web:30ae8ebe4b3f08fe935fcc",
 };
-firebase.initializeApp(firebaseConfig);
-const auth = firebase.auth();
-const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
-const facebookAuthProvider = new firebase.auth.FacebookAuthProvider();
-export { auth, googleAuthProvider, facebookAuthProvider };
+const fireDb = firebase.initializeApp(firebaseConfig);
+export default fireDb.database().ref();
