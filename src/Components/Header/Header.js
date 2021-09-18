@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link, useLocation, useHistory } from "react-router-dom";
 import "./Header.css";
 const Header = () => {
@@ -6,6 +6,11 @@ const Header = () => {
   const location = useLocation(); //! khi ta tự gõ địa chỉ qua trang thi css tự động nhay qua ô mà chúng ta chọn luôn
   const [search, setSearch] = useState("");
   const history = useHistory();
+  const InputEl = useRef();
+  useEffect(() => {
+    InputEl.current.focus();
+  }, []);
+
   useEffect(() => {
     if (location.pathname === "/") {
       setActiveTab("Home");
@@ -31,6 +36,7 @@ const Header = () => {
               type="text"
               className="inputField"
               placeholder="Search Name..."
+              ref={InputEl}
               value={search}
               onChange={(e) => setSearch(e.target.value)}
             />
