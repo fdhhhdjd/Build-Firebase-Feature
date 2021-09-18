@@ -55,4 +55,20 @@
     background-color: #e7e7e7;
     color: black;
   }
-  
+
+  .dropdown{
+    width: 20%;
+    margin:5px;
+  }
+  .btn-reset{
+    background-color: darkorange;
+    color: black;
+  }
+  .btn-active{
+    background-color:#808c4a;
+    color: black;
+  }
+  .btn-inactive{
+    background-color:#445f61;
+    color: black;
+  }

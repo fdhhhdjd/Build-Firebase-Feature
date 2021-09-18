@@ -54,6 +54,7 @@ const Search = () => {
               <td style={{ textAlign: "center" }}>Name</td>
               <td style={{ textAlign: "center" }}>Email</td>
               <td style={{ textAlign: "center" }}>Contact</td>
+              <td style={{ textAlign: "center" }}>Status</td>
               <td style={{ textAlign: "center" }}>Action</td>
             </tr>
           </thead>
@@ -65,6 +66,7 @@ const Search = () => {
                   <td>{data[id].name}</td>
                   <td>{data[id].email}</td>
                   <td>{data[id].contact}</td>
+                  <td>{data[id].status}</td>
                   <td>
                     <Link to={`/update/${id}`}>
                       <button className="bttn btn-edit">Edit</button>

@@ -7,16 +7,17 @@ const initialState = {
   name: "",
   email: "",
   contact: "",
+  status: "",
 };
 const AddEdit = () => {
   const [state, setState] = useState(initialState);
   const [data, setData] = useState({});
   const history = useHistory();
   const { id } = useParams();
-  const { name, email, contact } = state;
+  const { name, email, contact, status } = state;
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!name || !email || !contact) {
+    if (!name || !email || !contact || !status) {
       toast.error("Please Enter Full 🙄");
     } else {
       if (!id) {
@@ -104,6 +105,15 @@ const AddEdit = () => {
           name="contact"
           placeholder="Your Contact Number..."
           value={contact || ""}
+          onChange={handleChange}
+        />
+        <label htmlFor="name">Status 🛑 </label>
+        <input
+          type="text"
+          id="contact"
+          name="status"
+          placeholder="Your Contact Status..."
+          value={status || ""}
           onChange={handleChange}
         />
         <input type="submit" value={id ? "Edit" : "Save"} />
