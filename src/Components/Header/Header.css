@@ -33,6 +33,15 @@
   .header-right {
     float: right;
   }
+  .inputField{
+    width: 40%!important;
+    padding:1px;
+    margin-top: 5px;
+    margin-right: 6px;
+    border: none;
+    font-size: 17px;
+
+  }
   
   @media screen and (max-width: 500px) {
     .header p {

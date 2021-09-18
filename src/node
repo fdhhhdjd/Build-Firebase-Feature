@@ -1,0 +1,17 @@
+           :Trả về tên của các thuộc tính và phương thức chuỗi có thể liệt kê của một đối tượng.
+keys():     :Đối tượng chứa các thuộc tính và phương thức.
+           : Đây có thể là một đối tượng mà bạn đã tạo hoặc một đối tượng Mô hình Đối tượng Tài liệu (DOM) hiện có.
+
+exists()   :Trả về true nếu DataSnapshot này chứa bất kỳ dữ liệu nào. 
+           :Nó hiệu quả hơn một chút so với sử dụng snapshot.val ()! == null.
+
+                    Tạo một đối tượng Truy vấn mới được sắp xếp theo khóa con đã chỉ định.
+orderByChild():     Các truy vấn chỉ có thể sắp xếp theo một khóa tại một thời điểm. 
+                   
+                
+
+equalTo()           Tạo một Truy vấn bao gồm các phần tử con phù hợp với giá trị được chỉ định.
+                    Sử dụng startAt (), startAfter (), endBefore (), endAt () và equalTo () cho phép bạn chọn điểm bắt đầu và điểm kết thúc tùy ý cho các truy vấn của mình.
+                    Đối số khóa tùy chọn có thể được sử dụng để giới hạn thêm phạm vi của truy vấn. 
+                    Nếu nó được chỉ định, thì các con có chính xác giá trị được chỉ định cũng phải có chính xác khóa được chỉ định làm tên khóa của chúng.
+                    Điều này có thể được sử dụng để lọc các tập hợp kết quả có nhiều kết quả phù hợp cho cùng một giá trị.

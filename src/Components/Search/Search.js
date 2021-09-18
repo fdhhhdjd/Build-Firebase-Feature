@@ -1,22 +1,10 @@
 import React, { useState, useEffect } from "react";
+import { useLocation, Link } from "react-router-dom";
+import "./Search.css";
 import fireDb from "../../utils/firebase";
-import { Link } from "react-router-dom";
-import "./Home.css";
 import { toast } from "react-toastify";
-const Home = () => {
+const Search = () => {
   const [data, setData] = useState({});
-  useEffect(() => {
-    fireDb.child("contacts").on("value", (snapshot) => {
-      if (snapshot.val() !== null) {
-        setData({ ...snapshot.val() });
-      } else {
-        setData({});
-      }
-      return () => {
-        setData({});
-      };
-    });
-  }, []);
   const onDelete = (id) => {
     if (window.confirm("Are you sure you want to delete 🤔")) {
       fireDb.child(`contacts/${id}`).remove((error) => {
@@ -28,9 +16,37 @@ const Home = () => {
       });
     }
   };
+  const useQuery = () => {
+    return new URLSearchParams(useLocation().search);
+  };
+  let query = useQuery();
+  let search = query.get("name"); //!được chỉ định theo tên
+  console.log(search);
+
+  const searchData = () => {
+    fireDb
+      .child("contacts")
+      .orderByChild("name") //! Sắp xếp theo khóa
+      //!cho phép bạn chọn điểm bắt đầu và điểm kết thúc tùy ý cho các truy vấn của mình
+      .equalTo(search)
+      .on("value", (snapshot) => {
+        if (snapshot.val()) {
+          const data = snapshot.val();
+          setData(data);
+        }
+      });
+  };
+  useEffect(() => {
+    searchData();
+  }, [search]);
   return (
-    <>
-      <div style={{ marginTop: "100px" }}>
+    <div style={{ marginTop: "100px" }}>
+      <Link to="/">
+        <button className="btn btn-search1">Go Back 🔙</button>
+      </Link>
+      {Object.keys(data).length === 0 ? (
+        <h2>No Search Found With that Name 😪: {search}</h2>
+      ) : (
         <table className="styled-table">
           <thead>
             <tr>
@@ -68,9 +84,9 @@ const Home = () => {
             })}
           </tbody>
         </table>
-      </div>
-    </>
+      )}
+    </div>
   );
 };
 
-export default Home;
+export default Search;
